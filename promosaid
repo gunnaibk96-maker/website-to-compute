@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4-сынып Математика – Жеке оқу траекториясы</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#f4f4f4; margin:0; padding:0; }
+    header { background:#0077ff; color:#fff; padding:20px; text-align:center; }
+    .container { padding:20px; max-width:800px; margin:auto; }
+    .task-card { background:#fff; padding:20px; margin-bottom:20px; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1);}    
+    input { padding:10px; width:100%; margin-top:10px; font-size:1.1em; }
+    button { padding:10px 22px; margin-top:10px; background:#0077ff; border:none; border-radius:8px; color:white; font-size:1em; cursor:pointer; }
+    .result { margin-top:10px; font-weight:bold; }
+  </style>
+</head>
+<body>
+<header>
+  <h1>📘 4-сыныпқа арналған Математика – Жеке оқу траекториясы</h1>
+  <p>AI тексеретін тапсырмалар, ойындар, мадақтау және түсіндіру</p>
+</header>
+<div class="container">
+
+  <div class="task-card">
+    <h2>1) Көптаңбалы сандарды ауызша көбейту</h2>
+    <p>Есеп: <strong>240 × 3 = ?</strong></p>
+    <input id="mulInput" placeholder="Жауабыңызды жазыңыз" />
+    <button onclick="checkMul()">Тексеру</button>
+    <div id="mulResult" class="result"></div>
+  </div>
+
+  <div class="task-card">
+    <h2>2) Көптаңбалы сандарды бөлу</h2>
+    <p>Есеп: <strong>450 ÷ 5 = ?</strong></p>
+    <input id="divInput" placeholder="Жауабыңызды жазыңыз" />
+    <button onclick="checkDiv()">Тексеру</button>
+    <div id="divResult" class="result"></div>
+  </div>
+
+  <div class="task-card">
+    <h2>🎮 Математика ойыны: «Тез ойла!»</h2>
+    <p id="gameTask">Бастау үшін батырманы басыңыз</p>
+    <input id="gameInput" placeholder="Жауабы" />
+    <button onclick="checkGame()">Жауап беру</button>
+    <button onclick="newGame()">Жаңа тапсырма</button>
+    <div id="gameResult" class="result"></div>
+  </div>
+
+</div>
+
+<script>
+function aiPraise() {
+  const praises = [
+    "Өте жақсы! 👏",
+    "Керемет орындадың! 🌟",
+    "Жарайсың, дәл жауап! 👍",
+    "Мықтысың! Жалғастыра бер! 🚀"
+  ];
+  return praises[Math.floor(Math.random() * praises.length)];
+}
+
+function checkMul() {
+  const answer = document.getElementById('mulInput').value;
+  const result = document.getElementById('mulResult');
+  if (answer == 720) {
+    result.innerHTML = aiPraise();
+  } else {
+    result.innerHTML = "Дұрыс емес. Түсіндіру: 240 × 3 = 200×3 + 40×3 = 600 + 120 = 720";
+  }
+}
+
+function checkDiv() {
+  const answer = document.getElementById('divInput').value;
+  const result = document.getElementById('divResult');
+  if (answer == 90) {
+    result.innerHTML = aiPraise();
+  } else {
+    result.innerHTML = "Қате. Түсіндіру: 450 ÷ 5 = 45 ÷ 5 × 10 = 9 × 10 = 90";
+  }
+}
+
+let a, b;
+function newGame() {
+  a = Math.floor(Math.random()*90)+10;
+  b = Math.floor(Math.random()*9)+2;
+  document.getElementById('gameTask').innerText = `${a} × ${b} = ?`;
+  document.getElementById('gameResult').innerText = "";
+  document.getElementById('gameInput').value = "";
+}
+
+function checkGame() {
+  const answer = document.getElementById('gameInput').value;
+  const result = document.getElementById('gameResult');
+  if (answer == (a*b)) {
+    result.innerHTML = aiPraise();
+  } else {
+    result.innerHTML = `Қате. Дұрысы: ${a} × ${b} = ${a*b}`;
+  }
+}
+</script>
+
+</body>
+</html>
